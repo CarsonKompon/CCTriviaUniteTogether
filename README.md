@@ -1,5 +1,5 @@
 # Trivia Unite Together
- A trivia game made for ComputerCraft designed for 1-4 Players. Powered by [OpenTDB](https://opentdb.com/).
+ A trivia game made in ComputerCraft designed for 1-4 Players. Powered by [OpenTDB](https://opentdb.com/).
  A multiplayer fork of [Trivia Unite](https://github.com/cklidify/CCTriviaUnite).
  
  ![Showcase](/screenshots/showcase.gif)
