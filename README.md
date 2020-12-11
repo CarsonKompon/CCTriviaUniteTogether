@@ -12,7 +12,9 @@
  The quicker you answer, the more points you receive. The player with the highest score wins!
 
 ## Installation
- First you must create a setup similar to the image below (Position of main monitor must be to the right of the computer)
+ First you must create a setup similar to the image below
+ 
+ (The position of the main monitor **must** be to the right of the computer)
  
  ![Guide](/screenshots/setup.png)
  
