@@ -1,12 +1,12 @@
-os.loadAPI("bigfont")
-os.loadAPI("json")
+os.loadAPI(".triviaunite/dependencies/bigfont")
+os.loadAPI(".triviaunite/dependencies/json")
 
 local modem = peripheral.find("modem")
 local monitor = peripheral.wrap("right")
 local speaker = peripheral.find("speaker")
 
 local podiumNames = {
-    "monitor_5", "monitor_4", "monitor_6", "monitor_7"
+    "monitor_0", "monitor_1", "monitor_2", "monitor_3"
 }
 
 local podiums = {
@@ -48,7 +48,7 @@ local QUESTIONTEXT = " "
 local DISPLAYTEXT = " "
 local TEXTTIMER = 0
 local SELECTEDANSWER = {0,0,0,0}
-local SCORESAVE = "highscore.sav"
+local SCORESAVE = ".triviaunite/highscore-together.sav"
 local READY = {false,false,false,false}
 local READYTIME = 15*20
 local ANSWERTIME = {0,0,0,0}
@@ -64,11 +64,11 @@ monitor.clear()
 
 local programTimer = 0
 
-local imgLogo = paintutils.loadImage("logo.nfp")
-local imgDiamond1 = paintutils.loadImage("diamond.nfp")
-local imgDiamond2 = paintutils.loadImage("diamond1.nfp")
-local imgDiamond3 = paintutils.loadImage("diamond2.nfp")
-local imgDiamond4 = paintutils.loadImage("diamond3.nfp")
+local imgLogo = paintutils.loadImage(".triviaunite/images/logo.nfp")
+local imgDiamond1 = paintutils.loadImage(".triviaunite/images/diamond1.nfp")
+local imgDiamond2 = paintutils.loadImage(".triviaunite/images/diamond2.nfp")
+local imgDiamond3 = paintutils.loadImage(".triviaunite/images/diamond3.nfp")
+local imgDiamond4 = paintutils.loadImage(".triviaunite/images/diamond4.nfp")
 
 local menuDiamonds = {}
 local menuDiamondTimer = 0
@@ -99,7 +99,7 @@ function draw_menu_background()
     if programTimer % 21 == 0 then
         table.insert(menuDiamonds,{i=0,y=-16,x=math.floor(math.random(-8,MONITOR_WIDTH))})
     end
-    
+
     for ii, d in ipairs(menuDiamonds) do
         local dimg = imgDiamond1
         if menuDiamondTimer == 1 or menuDiamondTimer == 5 then dimg = imgDiamond2
@@ -122,7 +122,7 @@ end
 --Draw Main Menu
 function draw_menu()
     window.clear()
-    
+
     draw_menu_background()
 
     window.setTextColor(colors.black)
@@ -201,7 +201,7 @@ end
 
 --Draw Game GUI
 function draw_game_gui()
-    
+
 
     window.setTextColor(colors.black)
 
@@ -214,7 +214,7 @@ function draw_game_gui()
         end
     end
 
-    local txt = tostring(ROUND) .. "/10" 
+    local txt = tostring(ROUND) .. "/10"
     bigfont.writeOn(term, 1, txt,  MONITOR_WIDTH-(#txt*3), 2)
 
     window.setTextColor(colors.black)
@@ -261,7 +261,7 @@ function draw_game_gui()
     ]]
 
     window.setBackgroundColor(colors.cyan)
-    
+
     --Print Category
     if ROUNDTIME < (30*20) then
         window.setCursorPos(1,MONITOR_HEIGHT)
@@ -287,7 +287,7 @@ function draw_game()
     --Draw Main Menu
     if GAMESTATE == 0 then
        draw_menu()
-    
+
     -- Draw Game End
     elseif GAMESTATE == 4 then
         window.clear()
@@ -328,7 +328,7 @@ function draw_game()
 
     -- Draw Game
     else
-        
+
         window.clear()
 
         --Draw the current question
@@ -396,7 +396,7 @@ function update_podiums()
                             select_answer(4, i)
                         end
                     end
-                    
+
                 else
                     if GAMESTATE == 0 then
                         if not READY[i] then
@@ -406,7 +406,7 @@ function update_podiums()
                         end
                     end
                 end
-                
+
                 clicked = false
             end
 
@@ -431,7 +431,7 @@ function draw_podiums()
             podium.setBackgroundColor(colors.black)
             podium.setTextColor(colors.white)
 
-            
+
             local btncol = colors.red
             if READY[i] then
                 btncol = colors.green
@@ -598,7 +598,7 @@ function end_game()
             WINNER = j
         end
     end
-    
+
     ROUND = 10
     GAMESTATE = 4
 
@@ -629,7 +629,7 @@ end
 function select_answer(num, player)
     SELECTEDANSWER[player] = num
     ANSWERTIME[player] = ROUNDTIME
-    
+
     local remaining = #PLAYERS
     for j=1,4 do
         if SELECTEDANSWER[j] ~= 0 then
@@ -674,7 +674,7 @@ end
 --Update Game
 function update_game()
     programTimer = programTimer + 1
-    
+
     --Mouse clicked events
     if clicked and whoClicked == "right" then
 
@@ -691,7 +691,7 @@ function update_game()
                     speaker.playSound("minecraft:ui.button.click")
                 end
             end
-        
+
         --GAME STATE
         elseif GAMESTATE == 2 then
             --[[
@@ -794,7 +794,7 @@ function get_input()
 end
 
 while true do
-    
+
     parallel.waitForAny(get_input, main_game)
 
 end
