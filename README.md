@@ -18,15 +18,14 @@
  
  ![Guide](/screenshots/setup.png)
  
- Then enter the Advanced Computer, and enter `pastebin get EwswWL4S triviatogether` into the terminal.
+ Then enter the Advanced Computer, and enter `pastebin run AzxtVKfJ` into the terminal.
  
- Once it's been downloaded to your Computer, run the installer by entering `triviatogether` into the terminal.
- Your computer will download all the neccessary APIs, Images, and LUA files, and automatically reboot when it's done.
+ Once it's been installed to your Computer, tun the game by entering `triviaunitetogether` into the terminal.
 
- If the game does not start after rebooting, terminate the program with CTRL+T, then enter `edit startup.lua` and find the following code block:
+ If the game does not start properly, terminate the program with CTRL+T, then enter `edit triviaunitetogether` and look for the following code block:
  ```
  local podiumNames = {
-    "monitor_5", "monitor_4", "monitor_6", "monitor_7"
+    "monitor_0", "monitor_1", "monitor_2", "monitor_3"
  }
 ```
 Replace `"monitor_x"` with the names of the 4 podium monitors in order of Player 1 to Player 4. You can get the name of each monitor in chat when you right click on their respective wired modems.
